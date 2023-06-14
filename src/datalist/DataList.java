@@ -33,7 +33,7 @@ public class DataList<T> {
             }
             this.dataList = dataList;
             reader.close();
-            System.out.println("File list loaded successfully.");
+            //System.out.println("File list loaded successfully.");
         } catch (FileNotFoundException e) {
             System.out.println("File not found.");
         } catch (Exception e) {

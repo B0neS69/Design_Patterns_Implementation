@@ -1,6 +1,7 @@
 package dataobjects;
 
-public class Supplier extends Model {
+public class
+Supplier extends Model {
     private String name;
     private String address;
     private String phone;

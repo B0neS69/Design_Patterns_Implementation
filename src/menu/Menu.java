@@ -11,6 +11,7 @@ public class Menu {
    // Scanner sc = new Scanner(System.in);
     public void startMenu() {
         clearConsole();
+
         BakeryFacade bakeryFacade;
         String[] model_name = {"Assortment", "Customers", "Supplier", "Storage", "SaleStatistics", "Employee", "Order"};
         String[] table_name = {"Асортимент", "Клієнти", "Постачальники", "Склад", "Статистика продажів", "Співробітники", "Замовлення"};
@@ -28,10 +29,9 @@ public class Menu {
         System.out.println(skip);
         System.out.println(String.format("%-" + 45 + "s", "| "+(0)+". Вийти ")+" |");
         System.out.println(skip);
-
         int num = sc.nextInt()-1;
-        if(num == -1){
-            return;
+        if(num == -1) {
+            System.exit(0);
         }
         if(num == 7){
             bakeryFacade = new BakeryFacade(model_name[6]);
@@ -52,7 +52,7 @@ public class Menu {
 
     public void selectAction(String nameT, String name) {
         BakeryFacade bakeryFacade = new BakeryFacade(nameT);
-        String skip = "+"+"-".repeat(40)+"+";
+        String skip = "+"+"-".repeat(60)+"+";
         clearConsole();
         System.out.println(skip);
         while (true) {
@@ -60,13 +60,13 @@ public class Menu {
             clearConsole();
 
             System.out.println(
-                    skip + "\n" + String.format("%-" + 40 + "s", "| Виберіть дію "                     )  + " | \n" +
-                    skip + "\n" + String.format("%-" + 40 + "s", "| 1. Вивести таблицю "         + name)  + " | \n" +
-                    skip + "\n" + String.format("%-" + 40 + "s", "| 2. Додати дані до таблиці "  + name)  + " | \n" +
-                    skip + "\n" + String.format("%-" + 40 + "s", "| 3. Видалити дані з таблиці " + name)  + " | \n" +
-                    skip + "\n" + String.format("%-" + 40 + "s", "| 4. Посортувати таблицю "     + name)  + " | \n" +
-                    skip + "\n" + String.format("%-" + 40 + "s", "| 5. Пошук даних у таблиці "   + name)  + " | \n" +
-                    skip + "\n" + String.format("%-" + 40 + "s", "| 6. Вихід"                          )  + " | \n" +
+                    skip + "\n" + String.format("%-" + 60 + "s", "| Виберіть дію "                     )  + " | \n" +
+                    skip + "\n" + String.format("%-" + 60 + "s", "| 1. Вивести таблицю "         + name)  + " | \n" +
+                    skip + "\n" + String.format("%-" + 60 + "s", "| 2. Додати дані до таблиці "  + name)  + " | \n" +
+                    skip + "\n" + String.format("%-" + 60 + "s", "| 3. Видалити дані з таблиці " + name)  + " | \n" +
+                    skip + "\n" + String.format("%-" + 60 + "s", "| 4. Посортувати таблицю "     + name)  + " | \n" +
+                    skip + "\n" + String.format("%-" + 60 + "s", "| 5. Пошук даних у таблиці "   + name)  + " | \n" +
+                    skip + "\n" + String.format("%-" + 60 + "s", "| 6. Вихід"                          )  + " | \n" +
                     skip);
             int choice = sc.nextInt();
             sc.nextLine(); // Очистити буфер після введення числа

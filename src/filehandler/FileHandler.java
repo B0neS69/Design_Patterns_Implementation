@@ -8,6 +8,7 @@ import java.io.PrintWriter;
 import java.nio.charset.Charset;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -69,11 +70,17 @@ public class FileHandler<T> implements IFileHandler<T> {
 
         for (int i = 0; i < list.size(); i++) {
             String[] rowData = ih.getRowData(list.get(i));
-            date = LocalDate.parse(rowData[4], formatter);
-            if (date.isBefore(currentDate)) {
-                list.remove(i);
-            } else if (date.isEqual(currentDate)) {
-                new_list.add(list.get(i));
+            try {
+                date = LocalDate.parse(rowData[4], formatter);
+                if (date.isBefore(currentDate)) {
+                    list.remove(i);
+                } else if (date.isEqual(currentDate)) {
+                    new_list.add(list.get(i));
+                }
+            } catch (DateTimeParseException e) {
+                // Обробка помилки перетворення дати
+                System.out.println("Помилка перетворення дати: " + e.getMessage());
+                // Додаткові дії, якщо потрібно
             }
         }
 
@@ -123,7 +130,7 @@ public class FileHandler<T> implements IFileHandler<T> {
             FileWriter writer = new FileWriter(fileName);
             writer.write("");
             writer.close();
-            System.out.println("File cleared successfully!");
+           // System.out.println("File cleared successfully!");
         } catch (IOException e) {
             e.printStackTrace();
         }
